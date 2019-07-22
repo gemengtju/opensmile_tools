@@ -1,0 +1,8 @@
+D:\opensmile-2.3.0\progsrc\openSMILEbatchGUI\obj\x86\Release\openSMILEbatchGUI.Form1.resources
+D:\opensmile-2.3.0\progsrc\openSMILEbatchGUI\obj\x86\Release\openSMILEbatchGUI.Properties.Resources.resources
+D:\opensmile-2.3.0\progsrc\openSMILEbatchGUI\obj\x86\Release\openSMILEbatchGUI.csproj.GenerateResource.Cache
+D:\opensmile-2.3.0\progsrc\openSMILEbatchGUI\bin\Release\openSMILEbatchGUI.exe
+D:\opensmile-2.3.0\progsrc\openSMILEbatchGUI\bin\Release\openSMILEbatchGUI.pdb
+D:\opensmile-2.3.0\progsrc\openSMILEbatchGUI\obj\x86\Release\openSMILEbatchGUI.Form2.resources
+D:\opensmile-2.3.0\progsrc\openSMILEbatchGUI\obj\x86\Release\openSMILEbatchGUI.exe
+D:\opensmile-2.3.0\progsrc\openSMILEbatchGUI\obj\x86\Release\openSMILEbatchGUI.pdb

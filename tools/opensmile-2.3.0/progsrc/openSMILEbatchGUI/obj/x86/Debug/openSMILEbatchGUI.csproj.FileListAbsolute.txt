@@ -1,0 +1,4 @@
+D:\opensmile-2.3.0\progsrc\openSMILEbatchGUI\obj\x86\Debug\openSMILEbatchGUI.csprojResolveAssemblyReference.cache
+D:\opensmile-2.3.0\progsrc\openSMILEbatchGUI\obj\x86\Debug\openSMILEbatchGUI.Form1.resources
+D:\opensmile-2.3.0\progsrc\openSMILEbatchGUI\obj\x86\Debug\openSMILEbatchGUI.Properties.Resources.resources
+D:\opensmile-2.3.0\progsrc\openSMILEbatchGUI\obj\x86\Debug\openSMILEbatchGUI.csproj.GenerateResource.Cache
