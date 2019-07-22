@@ -17,12 +17,12 @@ PCM_WAV_STR_PATTERN=".wav"
 
 ####================================= siyuke must care about it so important=================================
 ### OPENSmile feature extraction function parameters
-OUTPUT_DIR_AFTER_PCM2WAV="/Work18/2015/gemeng/tools/utils_tools/drunk_asr-maste/drunk_asr/data/"
+OUTPUT_DIR_AFTER_PCM2WAV="./data/"
 AUDIO_STR_PATTERN=".wav"
-OPENSMILE_DIR="/Work18/2015/gemeng/tools/utils_tools/drunk_asr-maste/drunk_asr/tools/opensmile-2.3.0"
+OPENSMILE_DIR="./tools/opensmile-2.3.0"
 TR_VAD_DATA_DIR=$OUTPUT_DIR_AFTER_PCM2WAV
 OUTPUT_OPENSMILE_BAT_CONF_NAME="tmp_conf"
-OPENSMILE_FEATURE_OUTPUT_PATH="/Work18/2015/gemeng/tools/utils_tools/drunk_asr-maste/drunk_asr/feature/opensmile_wav/"
+OPENSMILE_FEATURE_OUTPUT_PATH="./feature/opensmile_feature/"
 OUTPUT_OPENSMILE_BAT_CONF_PATH=${OPENSMILE_DIR}/${OUTPUT_OPENSMILE_BAT_CONF_NAME}
 JOBS_NUM=2 # the max number of the cpus
 ####==================================================================
