@@ -120,7 +120,8 @@ def generate_opensmile_conf(args):
     # basic config params
     #opensmile_dir = '/home/luban/gemeng/drunk_asr/tools/opensmile-2.3.0'
     runfile_path = opensmile_dir + '/bin/linux_x64_standalone_static/SMILExtract'
-    conf_path = opensmile_dir + '/config/IS09_emotion.conf'
+    #conf_path = opensmile_dir + '/config/IS09_emotion.conf'
+    conf_path = opensmile_dir + '/config/IS09_emotion_only_pitch.conf'
     #conf_path = opensmile_dir + '/config/gemaps/GeMAPSv01a.conf'
     #output_feature_path = '/home/luban/gemeng/drunk_asr/feature/' + audio_name + '.arff'
     output_opensmile_extract_path = opensmile_dir + '/' + output_opensmile_bat_conf_name
@@ -169,6 +170,70 @@ def generate_opensmile_conf(args):
     f.close()
    #os.system("chmod +x %s" % (output_opensmile_extract_path))
 
+# generate the final opensmile config file (The function only for "pitch" feature, the version of opensmile is 2.3)
+def generate_opensmile_conf_pitch(args):
+    print(args)
+    opensmile_dir = args.opensmile_dir
+    output_opensmile_bat_conf_name = args.output_opensmile_bat_conf_name
+    tr_vad_data_dir = args.tr_vad_data_dir
+    audio_str_pattern = args.audio_str_pattern
+    opensmile_feature_output_path = args.opensmile_feature_output_path
+
+    path_is_exists(opensmile_feature_output_path)
+    # basic config params
+    #opensmile_dir = '/home/luban/gemeng/drunk_asr/tools/opensmile-2.3.0'
+    runfile_path = opensmile_dir + '/bin/linux_x64_standalone_static/SMILExtract'
+    conf_path = opensmile_dir + '/config/IS09_emotion_only_pitch.conf'
+    #conf_path = opensmile_dir + '/config/gemaps/GeMAPSv01a.conf'
+    #output_feature_path = '/home/luban/gemeng/drunk_asr/feature/' + audio_name + '.arff'
+    output_opensmile_extract_path = opensmile_dir + '/' + output_opensmile_bat_conf_name
+    # generate process details
+    audio_list = list_audio_path(tr_vad_data_dir, audio_str_pattern)
+    print(audio_list[0])
+    extracted_idx = 0
+    for i in range(len(audio_list)):
+        audio_name = audio_list[i]
+        #wav_name = audio_name.split('/')[-1].split('.')[0]
+        wav_name = os.path.splitext(audio_name.split("/")[-1])[0]
+        #output_feature_path = '/home/luban/gemeng/drunk_asr/feature/split_drunk/ch1/' + wav_name + '.arff'
+        #output_feature_path = opensmile_feature_output_path + '1.arff'
+        output_feature_path = opensmile_feature_output_path + wav_name + '.csv'
+        # the length of the current audio
+        duration = get_audio_duration(audio_name)
+        #if duration < 1.0:
+        #    continue
+        #print(duration)
+        tmp_start = 0
+        tmp_skip = 0.050
+        segment_length = 0.265
+        count = 0
+        #if i == 3:
+        #    break
+        str = '%s -C %s -I %s -csvoutput %s -l 0\n' % (runfile_path, conf_path, audio_name, output_feature_path)
+        with open(output_opensmile_extract_path, 'a+') as f:
+            f.write(str)
+        #while(1):
+        #    if duration < segment_length:
+        #        str = '%s -C %s -I %s -O %s -start %f -end %f -l 0\n' % (runfile_path, conf_path, audio_name, output_feature_path, tmp_start, duration)
+        #        with open(output_opensmile_extract_path, 'a+') as f:
+        #            f.write(str)
+        #        break 
+        #    else:
+        #        tmp_end = tmp_start + segment_length
+        #        if tmp_end > duration:
+        #            break
+        #        count = count + 1
+        #        # generate the commond string
+        #        str = '%s -C %s -I %s -O %s -start %f -end %f -l 0\n' % (runfile_path, conf_path, audio_name, output_feature_path, tmp_start, tmp_end)
+        #        with open(output_opensmile_extract_path, 'a+') as f:
+        #            f.write(str)
+        #    tmp_start = tmp_start + tmp_skip
+
+        extracted_idx = extracted_idx + 1
+        print(extracted_idx)
+
+    f.close()
+   #os.system("chmod +x %s" % (output_opensmile_extract_path))
 
 # generate opensmile config file from entire wav file 
 def generate_opensmile_conf_from_wav(args):
@@ -264,8 +329,9 @@ if __name__ == "__main__":
     elif args.mode == 'pcm2wav':
         pcm2wav(args)
     elif args.mode == 'create_opensmile_bat_conf':
-        generate_opensmile_conf(args)
+        #generate_opensmile_conf(args)
         #generate_opensmile_conf_from_wav(args)
+        generate_opensmile_conf_pitch(args)
     else:
         raise Exception("Error!!")
     # configure
